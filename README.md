@@ -1,2 +1,2 @@
 # SICP-exercise
-SICP 习题记录
+SICP 习题练习
