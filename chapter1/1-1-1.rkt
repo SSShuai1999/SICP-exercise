@@ -169,7 +169,6 @@
 (define (sqrt3 x)
   (sqrt-iter3 1.0 x))
 
-
 ; 练习 1.8
 (define (cube-improve guess x)
   (/ (+ (/ x (square guess)) (* guess 2)) 3))
