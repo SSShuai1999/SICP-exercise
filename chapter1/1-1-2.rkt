@@ -162,7 +162,7 @@
                         (first-denomination kinds-of-coin))
                      kinds-of-coin)))))
 
-; amount = 1; kinds-of-coin = 5;
+; amount=1; kinds-of-coin=5;
 
 ; 首先是：(cc 1 5))
 ; (+ (cc 1 4)
@@ -202,7 +202,7 @@
          (* 2 (f (- n 2)))
          (* 3(f (- n 3))))))
 
-; 迭代计算过程   
+; 迭代计算过程    
 (define (f-iter-start n)
   (f-iter 2 1 0 0 n))
 
@@ -214,3 +214,44 @@
               b
               (+ count 1)
               max)))
+
+; 习题 1.12
+(define (pascal row col)
+    (if (or (= col 0) (= row col))
+         1
+         (+ (pascal (- row 1) (- col 1))
+            (pascal (- row 1) col))))
+
+; 练习 1.13
+
+; 首先证明 Fib(n) = ϕn−ψn5√ .
+
+; 设 Fib(n) = ϕn−ψn5√
+
+; 则 Fib(n+1) = ϕn+1−ψn+15√ = ϕn⋅ϕ−ψn⋅ψ5√ = ϕn⋅1+5√2−ψn⋅1−5√25√ = 12⋅(ϕn−ψn5√+5√⋅(ϕn+ψn)5√) = 12⋅Fib(n)+ϕn+ψn2
+
+; Fib(n+2) = ϕn+2−ψn+25√ = ϕn⋅ϕ2−ψn⋅ψ25√ = ϕn⋅(1+5√2)2−ψn⋅(1−5√2)25√ = 12⋅(3⋅(ϕn−ψn)5√+5√⋅(ϕn+ψn)5√) = 32⋅Fib(n)+ϕn+ψn2
+
+; 可证 Fib(n+2) = Fib(n+1)+Fib(n) .
+
+; 又
+
+; ϕ0−ψ05√ = 0 = Fib(0)
+
+; ϕ1−ψ15√ = 1 = Fib(1)
+
+; 由此可知 Fib(n) = ϕn−ψn5√ 成立.
+
+; 于是Fib(n)可以拆成两数之差的形式 Fib(n) = ϕn−ψn5√ = ϕn5√−ψn5√ .
+
+; 而
+
+; 15√<12
+
+; |ψ| = |1−5√2|<1
+
+; 故 |ψn5√|<12 .
+
+; 即 |Fib(n)−ϕn5√|<12 .
+
+; 故得证：Fib(n) 是与 ϕn5√ 最接近的整数
