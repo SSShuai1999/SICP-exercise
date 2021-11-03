@@ -133,10 +133,10 @@
 
 ; 迭代递归 - fib
 (define (fib-iter n)
-  (define (fib-iter a b count)
+  (define (fib-iter2 a b count)
     (if [= count 0]
         b
-        (fib-iter (a + b) b (- count 1)))) 1 0 n)
+        (fib-iter2 (a + b) a (- count 1)))) 1 0 n)
 
 ; 换零钱实例
 ; 我们首先统计下单位，把美元单位看做 100
@@ -192,8 +192,25 @@
 
 ; 结果为 1
 
-  
+; 练习 1.11
 
+; 递归计算过程
+; (define (f n)
+;   (if (< n 3)
+;       n
+;       (+ (f (- n 1))
+;          (* 2 (f (- n 2)))
+;          (* 3(f (- n 3))))))
 
+; 迭代计算过程，我们要计算 n，首先要从 0，1，2 开始，我们应该有一个 count 变量作为储存。     
+(define (f-iter-start n)
+  (f-iter 2 1 0 0 n))
 
-  
+(define (f-iter a b c count max)
+  (if (= count max)
+      c
+      (f-iter (+ a (* 2 b) (* 3 c))
+              a
+              b
+              (+ count 1)
+              max)))
